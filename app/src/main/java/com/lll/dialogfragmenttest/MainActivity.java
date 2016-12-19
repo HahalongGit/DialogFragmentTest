@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private Button btn_show;
     private Button btn_show2;
+    private Button btn_show3;
+    private Button btn_show4;
     private String items[] = new String[]{"计算机科学", "Oracke", "JAVA", "计算机网络"};
     private NoticeDialogFragment dialogFragment;
     @Override
@@ -23,8 +25,12 @@ public class MainActivity extends AppCompatActivity
         dialogFragment = new NoticeDialogFragment();
         btn_show = (Button) findViewById(R.id.btn_show);
         btn_show2 = (Button) findViewById(R.id.btn_show2);
+        btn_show3 = (Button) findViewById(R.id.btn_show3);
+        btn_show4 = (Button) findViewById(R.id.btn_show4);
         btn_show.setOnClickListener(this);
         btn_show2.setOnClickListener(this);
+        btn_show3.setOnClickListener(this);
+        btn_show4.setOnClickListener(this);
 
     }
 
@@ -40,7 +46,31 @@ public class MainActivity extends AppCompatActivity
                 showMyDialog();
                 break;
             }
+            case R.id.btn_show3:{
+                showTimePicker();
+                break;
+            }
+            case R.id.btn_show4:{
+                datePicker();
+                break;
+            }
         }
+    }
+
+    /**
+     * 日期选择
+     */
+    private void datePicker() {
+        DatePickerFragment pickerFragment = new DatePickerFragment();
+        pickerFragment.show(getSupportFragmentManager(),"datePickerFragmentID");
+    }
+
+    /**
+     * 时间选择器
+     */
+    private void showTimePicker() {
+        TimePickerFragment pickerFragment = new TimePickerFragment();
+        pickerFragment.show(getSupportFragmentManager(),"timePickerFragmentID");
     }
 
     /**
